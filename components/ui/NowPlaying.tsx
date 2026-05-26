@@ -12,7 +12,7 @@ export default function NowPlaying() {
       title="Open playlist on Spotify"
     >
       <span className="np-bars" aria-hidden="true"><i /><i /><i /><i /></span>
-      <em>my playlist</em>
+      <em>Came across this</em>
       <span className="np-sep">·</span>
       <span className="np-artist">spotify</span>
     </a>

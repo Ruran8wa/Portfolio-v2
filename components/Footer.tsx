@@ -49,10 +49,10 @@ export default function Footer({ onTab, tweaks, setTweak }: Props) {
 
       <div className="foot-links">
         <TweaksPanel tweaks={tweaks} setTweak={setTweak} />
-        <a href="mailto:princerurangwa01@gmail.com">[ PRINCERURANGWA01@GMAIL.COM ]</a>
-        <a href="https://linkedin.com/in/ruran8wa" target="_blank" rel="noreferrer">[ LINKEDIN ]</a>
+        <a href="mailto:princerurangwa01@gmail.com">[ EMAIL ]</a>
+        <a href="https://www.linkedin.com/in/prince-rurangwa/" target="_blank" rel="noreferrer">[ LINKEDIN ]</a>
         <a href="https://github.com/ruran8wa" target="_blank" rel="noreferrer">[ GITHUB ]</a>
-        <a href="https://open.spotify.com/user/ruran8wa" target="_blank" rel="noreferrer">[ SPOTIFY ]</a>
+        <a href="https://open.spotify.com/user/31kkqbierhoqns4f6hdpilkf3fby" target="_blank" rel="noreferrer">[ SPOTIFY ]</a>
       </div>
     </footer>
   );
