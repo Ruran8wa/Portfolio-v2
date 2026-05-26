@@ -542,8 +542,11 @@ body::before {
 .proj-badge { display: inline-flex; align-items: center; gap: 6px; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); align-self: flex-start; }
 .proj-badge::before { content: "●"; font-size: 8px; }
 .proj-blurb { font-size: 14px; line-height: 1.6; color: var(--ink); padding-top: 6px; margin: 0 0 14px; }
+.proj-stack-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; }
 .proj-stack code { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; padding: 3px 8px; border: 1px solid var(--ink-soft); border-radius: 2px; color: var(--ink); }
+.proj-link { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--accent); text-decoration: none; white-space: nowrap; transition: opacity 0.15s; }
+.proj-link:hover { opacity: 0.7; }
 .work-intro { font-family: "Instrument Serif", serif; font-style: italic; font-size: clamp(24px, 4vw, 40px); line-height: 1.2; max-width: 20ch; color: var(--ink); }
 
 /* ── Play ─────────────────────────────────────────────────────────────── */

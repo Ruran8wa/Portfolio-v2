@@ -9,16 +9,19 @@ const PROJECTS = [
     tag: "01", name: "Traka", status: "shipped",
     blurb: "A lightweight, cross-platform desktop time tracker. Lives in your tray, stays out of the way, and gives you weekly receipts on what you actually did. Built around the principle that the best tracker is the one you forget is running.",
     stack: ["Tauri", "React", "Rust"],
+    url: "https://github.com/Aevlabs/traka-releases",
   },
   {
     tag: "02", name: "Rayo", status: "in beta",
     blurb: "A mobile-first map of public buildings in Rwanda, scoring each on accessibility — ramps, restrooms, signage, navigability. Crowdsourced data, offline-first, designed for wheelchair users, parents with strollers, and field surveyors.",
     stack: ["Expo", "React Native", "NestJS", "Supabase"],
+    url: "https://github.com/Ruran8wa/Rayo",
   },
   {
     tag: "03", name: "Hanki", status: "shipped",
     blurb: "Connects the Rwandan diaspora with youth back home — mentorship, scholarships, opportunities. The hard part wasn't the tech; it was designing a feed that didn't feel like LinkedIn.",
     stack: ["React", "TypeScript", "Supabase"],
+    url: "https://atlasc2u.vercel.app/",
   },
 ];
 
@@ -49,8 +52,11 @@ export default function WorkScreen() {
             </div>
             <div>
               <p className="proj-blurb">{p.blurb}</p>
-              <div className="proj-stack">
-                {p.stack.map((s) => <code key={s}>{s}</code>)}
+              <div className="proj-stack-row">
+                <div className="proj-stack">
+                  {p.stack.map((s) => <code key={s}>{s}</code>)}
+                </div>
+                <a className="proj-link" href={p.url} target="_blank" rel="noreferrer">view →</a>
               </div>
             </div>
           </Reveal>
