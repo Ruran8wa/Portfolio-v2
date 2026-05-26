@@ -44,7 +44,7 @@ export default function AboutScreen() {
             <div className="cur-cell cur-cell-music">
               <div className="cur-cell-label">Playing</div>
               <div className="cur-cell-value"><NowPlaying /></div>
-              <div className="cur-cell-meta">spotify · live</div>
+              <div className="cur-cell-meta">spotify · playlist</div>
             </div>
           </div>
         </div>
