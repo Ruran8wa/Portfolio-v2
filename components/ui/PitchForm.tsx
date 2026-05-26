@@ -15,18 +15,13 @@ export default function PitchForm({ onClose }: { onClose: () => void }) {
     return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
   }, [onClose]);
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.includes("@") || !idea.trim()) { setState("error"); return; }
-    try {
-      const res = await fetch("/api/pitches", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), idea: idea.trim() }),
-      });
-      if (!res.ok) throw new Error();
-      setState("saved");
-    } catch { setState("error"); }
+    const subject = encodeURIComponent(`Pitch idea from ${email.trim()}`);
+    const body = encodeURIComponent(`From: ${email.trim()}\n\n${idea.trim()}`);
+    window.open(`mailto:princerurangwa01@gmail.com?subject=${subject}&body=${body}`);
+    setState("saved");
   };
 
   return (
