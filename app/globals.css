@@ -537,12 +537,11 @@ body::before {
 }
 .proj:hover { padding-left: 12px; background: rgba(255,255,255,0.15); }
 .proj-no { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--ink-soft); padding-top: 14px; }
-.proj-head { display: flex; flex-direction: column; gap: 12px; padding-top: 4px; }
+.proj-head { display: flex; flex-direction: row; align-items: center; gap: 12px; padding-top: 4px; flex-wrap: wrap; }
 .proj-name { font-family: "DM Serif Display", serif; font-size: clamp(34px, 4.5vw, 58px); line-height: 0.95; letter-spacing: -0.02em; margin: 0; color: var(--ink); }
 .proj-badge { display: inline-flex; align-items: center; gap: 6px; font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); align-self: flex-start; }
 .proj-badge::before { content: "●"; font-size: 8px; }
 .proj-blurb { font-size: 14px; line-height: 1.6; color: var(--ink); padding-top: 6px; margin: 0 0 14px; }
-.proj-stack-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; }
 .proj-stack code { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; padding: 3px 8px; border: 1px solid var(--ink-soft); border-radius: 2px; color: var(--ink); }
 .proj-link { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--accent); text-decoration: none; white-space: nowrap; transition: opacity 0.15s; }

@@ -49,14 +49,12 @@ export default function WorkScreen() {
             <div className="proj-head">
               <h3 className="proj-name">{p.name}</h3>
               <span className="proj-badge">{p.status}</span>
+              <a className="proj-link" href={p.url} target="_blank" rel="noreferrer">view →</a>
             </div>
             <div>
               <p className="proj-blurb">{p.blurb}</p>
-              <div className="proj-stack-row">
-                <div className="proj-stack">
-                  {p.stack.map((s) => <code key={s}>{s}</code>)}
-                </div>
-                <a className="proj-link" href={p.url} target="_blank" rel="noreferrer">view →</a>
+              <div className="proj-stack">
+                {p.stack.map((s) => <code key={s}>{s}</code>)}
               </div>
             </div>
           </Reveal>
