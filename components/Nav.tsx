@@ -35,7 +35,7 @@ export default function Nav({ tab, onTab }: { tab: string; onTab: (t: string) =>
 
       <a
         className="nav-resume"
-        href="/resume.pdf"
+        href="/resume"
         target="_blank"
         rel="noreferrer"
       >

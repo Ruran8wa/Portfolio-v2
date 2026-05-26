@@ -800,6 +800,17 @@ body.trail-on a, body.trail-on button { cursor: none; }
 .tweaks-switch::before { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; background: var(--ink); transition: transform 0.18s, background 0.18s; }
 .tweaks-switch:checked::before { transform: translateX(18px); background: var(--paper); }
 
+/* ── Resume viewer ───────────────────────────────────────────────────── */
+.resume-page { display: flex; flex-direction: column; height: 100vh; background: #0c1d3a; color: #e8f2ff; font-family: "JetBrains Mono", monospace; }
+.resume-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; border-bottom: 1px solid #2a4f8a; flex-shrink: 0; }
+.resume-back { color: #7a9ec8; text-decoration: none; font-size: 12px; letter-spacing: 0.1em; transition: color 0.15s; }
+.resume-back:hover { color: #ffd84d; }
+.resume-title { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #e8f2ff; }
+.resume-download { color: #ffd84d; text-decoration: none; font-size: 11px; letter-spacing: 0.14em; border: 1px solid #ffd84d; padding: 6px 12px; transition: background 0.15s, color 0.15s; }
+.resume-download:hover { background: #ffd84d; color: #0c1d3a; }
+.resume-viewer { flex: 1; overflow: hidden; }
+.resume-iframe { width: 100%; height: 100%; border: none; display: block; }
+
 /* ── Mobile ──────────────────────────────────────────────────────────── */
 @media (max-width: 720px) {
   .nav { grid-template-columns: 1fr 1fr; gap: 12px 18px; padding: 14px 18px; }
