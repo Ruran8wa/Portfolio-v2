@@ -30,15 +30,12 @@ export default function App() {
     try { localStorage.setItem(STORAGE_KEY, palette); } catch {}
   }, [palette]);
 
-  const togglePalette = () =>
-    setPalette((p) => (p === "blueprint" ? "terminal" : "blueprint"));
-
   useEffect(() => {
     let seq: string[] = [];
     const onKey = (e: KeyboardEvent) => {
       seq = [...seq.slice(-(KONAMI.length - 1)), e.key];
       if (seq.join(",") === KONAMI.join(",")) {
-        setPalette("terminal");
+        setPalette((p) => (p === "blueprint" ? "terminal" : "blueprint"));
         setKonamiBanner(true);
         setTimeout(() => setKonamiBanner(false), 2800);
       }
@@ -63,10 +60,10 @@ export default function App() {
       <HalftoneBlob />
       <div className="grain" />
       {konamiBanner && (
-        <div className="unlocked-badge">★ terminal palette unlocked</div>
+        <div className="unlocked-badge">★ theme switched</div>
       )}
       <div className="app">
-        <Nav tab={tab} onTab={setTab} palette={palette} onTogglePalette={togglePalette} />
+        <Nav tab={tab} onTab={setTab} />
         {screens[tab]}
         <Footer onTab={setTab} />
       </div>

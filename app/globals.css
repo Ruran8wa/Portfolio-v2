@@ -139,20 +139,14 @@ body::before {
   align-items: center;
   justify-self: center;
 }
-.nav-right { display: flex; align-items: center; gap: 16px; justify-self: end; }
 .nav-resume {
   color: var(--ink);
   text-decoration: none;
   letter-spacing: 0.12em;
   transition: transform 0.15s, color 0.15s;
+  justify-self: end;
 }
 .nav-resume:hover { transform: translateX(-3px); color: var(--accent); }
-.nav-theme-toggle { appearance: none; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 7px; padding: 4px; }
-.ntt-dot { display: block; width: 9px; height: 9px; border-radius: 50%; transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s; }
-.ntt-dot[data-palette="blueprint"] { background: #ffd84d; }
-.ntt-dot[data-palette="terminal"]  { background: #b8ff5c; }
-.ntt-dot[data-active="0"] { opacity: 0.25; transform: scale(0.8); }
-.ntt-dot[data-active="1"] { opacity: 1; transform: scale(1.2); box-shadow: 0 0 6px currentColor; }
 .nav-tab {
   appearance: none;
   background: none;
