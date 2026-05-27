@@ -8,55 +8,37 @@ import WorkScreen from "@/components/screens/WorkScreen";
 import PlayScreen from "@/components/screens/PlayScreen";
 import AboutScreen from "@/components/screens/AboutScreen";
 
-type Palette = "acid" | "mono" | "sunset" | "plasma" | "blueprint" | "terminal";
+type Palette = "blueprint" | "terminal";
 
-interface Tweaks {
-  palette: Palette;
-  halftone: boolean;
-  grain: boolean;
-}
-
-type SetTweak = <K extends keyof Tweaks>(k: K, v: Tweaks[K]) => void;
-
-const DEFAULTS: Tweaks = { palette: "blueprint", halftone: true, grain: true };
 const KONAMI = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
-
-function useTweaks(defaults: Tweaks): [Tweaks, SetTweak] {
-  const [t, setT] = useState<Tweaks>(defaults);
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("portfolio-tweaks-v2");
-      if (saved) setT((prev) => ({ ...prev, ...JSON.parse(saved) }));
-    } catch {}
-  }, []);
-
-  const setTweak: SetTweak = (k, v) => {
-    setT((prev) => {
-      const next = { ...prev, [k]: v };
-      try { localStorage.setItem("portfolio-tweaks-v2", JSON.stringify(next)); } catch {}
-      return next;
-    });
-  };
-
-  return [t, setTweak];
-}
+const STORAGE_KEY = "portfolio-palette-v3";
 
 export default function App() {
   const [tab, setTab] = useState("home");
-  const [tweaks, setTweak] = useTweaks(DEFAULTS);
+  const [palette, setPalette] = useState<Palette>("blueprint");
   const [konamiBanner, setKonamiBanner] = useState(false);
 
   useEffect(() => {
-    document.body.setAttribute("data-palette", tweaks.palette);
-  }, [tweaks.palette]);
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY) as Palette | null;
+      if (saved === "blueprint" || saved === "terminal") setPalette(saved);
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    document.body.setAttribute("data-palette", palette);
+    try { localStorage.setItem(STORAGE_KEY, palette); } catch {}
+  }, [palette]);
+
+  const togglePalette = () =>
+    setPalette((p) => (p === "blueprint" ? "terminal" : "blueprint"));
 
   useEffect(() => {
     let seq: string[] = [];
     const onKey = (e: KeyboardEvent) => {
       seq = [...seq.slice(-(KONAMI.length - 1)), e.key];
       if (seq.join(",") === KONAMI.join(",")) {
-        setTweak("palette", "terminal");
+        setPalette("terminal");
         setKonamiBanner(true);
         setTimeout(() => setKonamiBanner(false), 2800);
       }
@@ -78,15 +60,15 @@ export default function App() {
 
   return (
     <>
-      {tweaks.halftone && <HalftoneBlob />}
-      {tweaks.grain && <div className="grain" />}
+      <HalftoneBlob />
+      <div className="grain" />
       {konamiBanner && (
         <div className="unlocked-badge">★ terminal palette unlocked</div>
       )}
       <div className="app">
-        <Nav tab={tab} onTab={setTab} />
+        <Nav tab={tab} onTab={setTab} palette={palette} onTogglePalette={togglePalette} />
         {screens[tab]}
-        <Footer onTab={setTab} tweaks={tweaks} setTweak={setTweak} />
+        <Footer onTab={setTab} />
       </div>
     </>
   );

@@ -1,26 +1,9 @@
 "use client";
 import { useState } from "react";
-import TweaksPanel from "@/components/TweaksPanel";
-
-type Palette = "acid" | "mono" | "sunset" | "plasma" | "blueprint" | "terminal";
-
-interface Tweaks {
-  palette: Palette;
-  halftone: boolean;
-  grain: boolean;
-}
-
-type SetTweak = <K extends keyof Tweaks>(k: K, v: Tweaks[K]) => void;
 
 const KONAMI_HINT = ["↑", "↑", "↓", "↓", "←", "→", "←", "→", "B", "A"];
 
-interface Props {
-  onTab: (t: string) => void;
-  tweaks: Tweaks;
-  setTweak: SetTweak;
-}
-
-export default function Footer({ onTab, tweaks, setTweak }: Props) {
+export default function Footer({ onTab }: { onTab: (t: string) => void }) {
   const [hint, setHint] = useState(false);
 
   return (
@@ -48,7 +31,6 @@ export default function Footer({ onTab, tweaks, setTweak }: Props) {
       </div>
 
       <div className="foot-links">
-        <TweaksPanel tweaks={tweaks} setTweak={setTweak} />
         <a href="mailto:princerurangwa01@gmail.com">[ EMAIL ]</a>
         <a href="https://www.linkedin.com/in/prince-rurangwa/" target="_blank" rel="noreferrer">[ LINKEDIN ]</a>
         <a href="https://github.com/ruran8wa" target="_blank" rel="noreferrer">[ GITHUB ]</a>

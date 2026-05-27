@@ -8,46 +8,18 @@
    ────────────────────────────────────────────────────────────────────────── */
 
 :root {
-  --bg:        #f4f6c7;
-  --bg-deep:   #e8ec8e;
-  --ink:       #0d1230;
-  --ink-soft:  #232a55;
-  --accent:    #2026a8;
-  --dot:       #6b7a1a;
-  --paper:     #fffde4;
-  /* cabinet surface — always dark regardless of palette */
-  --cab:         var(--ink);
-  --on-cab:      var(--bg);
-  --on-cab-soft: var(--bg-deep);
+  --bg:        #0c1d3a;
+  --bg-deep:   #1a3060;
+  --ink:       #e8f2ff;
+  --ink-soft:  #7a9ec8;
+  --accent:    #ffd84d;
+  --dot:       #2a4f8a;
+  --paper:     #071428;
+  --cab:         var(--paper);
+  --on-cab:      var(--ink);
+  --on-cab-soft: var(--ink-soft);
 }
 
-body[data-palette="mono"] {
-  --bg:        #f3f1ec;
-  --bg-deep:   #d8d4c9;
-  --ink:       #0a0a0a;
-  --ink-soft:  #2a2a2a;
-  --accent:    #0a0a0a;
-  --dot:       #1a1a1a;
-  --paper:     #fafaf6;
-}
-body[data-palette="sunset"] {
-  --bg:        #ffe4c8;
-  --bg-deep:   #ffb37a;
-  --ink:       #2a0e07;
-  --ink-soft:  #5a1f10;
-  --accent:    #c0270d;
-  --dot:       #8a3a18;
-  --paper:     #fff4e2;
-}
-body[data-palette="plasma"] {
-  --bg:        #f5d4ee;
-  --bg-deep:   #d77ec5;
-  --ink:       #1a0024;
-  --ink-soft:  #3a124a;
-  --accent:    #5e10b8;
-  --dot:       #6e2380;
-  --paper:     #fce8f6;
-}
 body[data-palette="blueprint"] {
   --bg:        #0c1d3a;
   --bg-deep:   #1a3060;
@@ -167,14 +139,20 @@ body::before {
   align-items: center;
   justify-self: center;
 }
+.nav-right { display: flex; align-items: center; gap: 16px; justify-self: end; }
 .nav-resume {
   color: var(--ink);
   text-decoration: none;
   letter-spacing: 0.12em;
   transition: transform 0.15s, color 0.15s;
-  justify-self: end;
 }
 .nav-resume:hover { transform: translateX(-3px); color: var(--accent); }
+.nav-theme-toggle { appearance: none; background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 7px; padding: 4px; }
+.ntt-dot { display: block; width: 9px; height: 9px; border-radius: 50%; transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s; }
+.ntt-dot[data-palette="blueprint"] { background: #ffd84d; }
+.ntt-dot[data-palette="terminal"]  { background: #b8ff5c; }
+.ntt-dot[data-active="0"] { opacity: 0.25; transform: scale(0.8); }
+.ntt-dot[data-active="1"] { opacity: 1; transform: scale(1.2); box-shadow: 0 0 6px currentColor; }
 .nav-tab {
   appearance: none;
   background: none;
@@ -783,22 +761,6 @@ body.trail-on a, body.trail-on button { cursor: none; }
 .unlocked-badge { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); padding: 8px 16px; background: var(--ink); color: var(--paper); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; z-index: 100; animation: drop 0.4s cubic-bezier(0.3, 1.4, 0.7, 1); }
 @keyframes drop { from { transform: translate(-50%, -100%); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
 
-/* ── Tweaks Panel ────────────────────────────────────────────────────── */
-.tweaks-panel { position: relative; display: inline-flex; flex-direction: column; align-items: flex-end; }
-.tweaks-toggle { appearance: none; background: var(--ink); color: var(--paper); border: 1px solid var(--ink); padding: 7px 12px; font: inherit; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: transform 0.1s; box-shadow: 2px 2px 0 var(--accent); }
-.tweaks-toggle:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--accent); }
-.tweaks-body { position: absolute; bottom: calc(100% + 8px); right: 0; background: var(--paper); border: 1px solid var(--ink); padding: 16px 18px; width: 240px; box-shadow: 4px 4px 0 var(--ink); display: flex; flex-direction: column; gap: 14px; animation: tweaks-in 0.18s cubic-bezier(0.3, 1.3, 0.5, 1); z-index: 40; }
-@keyframes tweaks-in { from { opacity: 0; transform: translateY(8px) scale(0.97); } to { opacity: 1; transform: none; } }
-.tweaks-section-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 8px; }
-.palette-swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
-.palette-swatch { appearance: none; border: 1px solid var(--ink); width: 28px; height: 28px; cursor: pointer; position: relative; transition: transform 0.12s; padding: 0; }
-.palette-swatch:hover { transform: scale(1.12); }
-.palette-swatch[data-active="1"] { outline: 2px solid var(--accent); outline-offset: 2px; }
-.tweaks-toggle-row { display: flex; align-items: center; justify-content: space-between; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--ink); }
-.tweaks-switch { appearance: none; width: 36px; height: 18px; border: 1px solid var(--ink); background: transparent; position: relative; cursor: pointer; padding: 0; transition: background 0.18s; flex-shrink: 0; }
-.tweaks-switch:checked { background: var(--accent); border-color: var(--accent); }
-.tweaks-switch::before { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; background: var(--ink); transition: transform 0.18s, background 0.18s; }
-.tweaks-switch:checked::before { transform: translateX(18px); background: var(--paper); }
 
 /* ── Resume viewer ───────────────────────────────────────────────────── */
 .resume-page { display: flex; flex-direction: column; height: 100vh; background: #0c1d3a; color: #e8f2ff; font-family: "JetBrains Mono", monospace; }
